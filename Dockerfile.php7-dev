@@ -40,8 +40,7 @@ RUN git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
     && mv PowerlineSymbols.otf ~/.fonts/ \
     && mkdir -p ~/.config/fontconfig/conf.d \
     && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/ \
-    && fc-cache -vf ~/.fonts/ \
-    && sed -i 's/robbyrussell/agnoster/g' ~/.zshrc\
+    && sed -i 's/robbyrussell/agnoster/g' ~/.zshrc
 
 COPY config/supervisor/supervisor.conf /etc/supervisor/conf.d/supervisord.conf
 COPY config/php/php.ini /etc/php/7.0/cli/conf.d/php.ini
