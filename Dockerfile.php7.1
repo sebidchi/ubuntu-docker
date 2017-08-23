@@ -51,7 +51,7 @@ RUN locale-gen en_US.UTF-8 \
       libxml2 \
     && rm -rf /var/lib/apt/lists/* \
 
-    && phpenmod -v 7.0 mcrypt
+    && phpenmod -v 7.1 mcrypt
 
 COPY config/php/php.ini /etc/php7/conf.d/50-setting.ini
 COPY config/php/opcache.ini /etc/php7/cli/conf.d/opcache.ini
