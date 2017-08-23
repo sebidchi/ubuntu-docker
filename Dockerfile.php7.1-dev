@@ -1,4 +1,4 @@
-FROM sebidchi/ubuntu-docker:7.0
+FROM sebidchi/ubuntu-docker:7.1
 
 ENV NOTVISIBLE="in users profile"
 
@@ -8,7 +8,11 @@ RUN apt-get update && apt-get install -y --allow-unauthenticated \
       supervisor \
       git \
       ant \
-      php7.0-xdebug \
+      php7.1-xdebug \
+      nano \
+      vim \
+      host \
+      inetutils-ping \
 
     && rm -rf /var/lib/apt/lists/* \
 
@@ -22,7 +26,7 @@ RUN apt-get update && apt-get install -y --allow-unauthenticated \
 
     # Install SSH Server to connect with your favourite IDE
     && mkdir -p /var/run/sshd \
-    && echo "root:randockdev" | chpasswd \
+    && echo "root:sebidchidev" | chpasswd \
     && sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
 
     # SSH login fix. Otherwise user is kicked off after login
@@ -43,8 +47,8 @@ RUN git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
     && sed -i 's/robbyrussell/agnoster/g' ~/.zshrc
 
 COPY config/supervisor/supervisor.conf /etc/supervisor/conf.d/supervisord.conf
-COPY config/php/php.ini /etc/php/7.0/cli/conf.d/php.ini
-COPY config/php/xdebug.ini /etc/php/7.0/cli/conf.d/20-xdebug.ini
+COPY config/php/php.ini /etc/php/7.1/cli/conf.d/php.ini
+COPY config/php/xdebug.ini /etc/php/7.1/cli/conf.d/20-xdebug.ini
 
 ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/etc/supervisor/conf.d/supervisord.conf"]
 

@@ -14,23 +14,29 @@ RUN locale-gen en_US.UTF-8 \
 
     && apt-get update \
     && apt-get -yq --allow-unauthenticated install \
-      php7.0 \
-      php7.0-fpm \
-      php7.0-curl \
-      php7.0-mysql \
-      php7.0-sqlite3 \
-      php7.0-intl \
-      php7.0-memcached \
-      php7.0-memcache \
-      php7.0-gd \
-      php7.0-apc \
-      php7.0-intl \
-      php7.0-ldap \
-      php7.0-mcrypt \
-      php7.0-readline \
-      php7.0-xml \
-      php7.0-mbstring \
-      php7.0-zip \
+      php7.1 \
+      php7.1-fpm \
+      php7.1-curl \
+      php7.1-mysql \
+      php7.1-sqlite3 \
+      php7.1-intl \
+      php7.1-memcached \
+      php7.1-memcache \
+      php7.1-gd \
+      php7.1-apc \
+      php7.1-intl \
+      php7.1-ldap \
+      php7.1-mcrypt \
+      php7.1-readline \
+      php7.1-xml \
+      php7.1-mbstring \
+      php7.1-zip \
+      php7.1-bcmath \
+      php7.1-opcache \
+      php7.1-readline \
+      php7.1-json \
+      php-apcu \
+      php-apcu-bc \
       libmaxminddb0 \
       libmaxminddb-dev \
       net-tools \
@@ -39,6 +45,10 @@ RUN locale-gen en_US.UTF-8 \
       zip \
       unzip \
       zsh \
+      g++ \
+      gcc \
+      make \
+      libxml2 \
     && rm -rf /var/lib/apt/lists/* \
 
     && phpenmod -v 7.0 mcrypt
